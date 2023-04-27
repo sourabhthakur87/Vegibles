@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
-import { useNavigate } from "react-router-dom"
+import { useNavigate,NavLink } from "react-router-dom"
+import Navbar from './Navbar'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default function SellerRegister() {
     const navigate = useNavigate()
     const [sellerData, setSellerData] = useState({
@@ -29,28 +32,95 @@ export default function SellerRegister() {
 
         await res.json();
         if (res.status === 400) {
-            alert("Data Present")
+            toast.warn("Shop Already Present", {
+                position: "top-center",
+                autoClose: 13,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                theme: "dark",
+            });
         }
         else if (res.status === 422) {
-            alert("Fill the form")
+            toast.warn('Fill The Form', {
+                position: "top-center",
+                autoClose: 13,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                theme: "dark",
+            });
         }
         else {
-            alert("Login Success")
-            navigate("/")
+            toast.success('Success', {
+                position: "top-center",
+                autoClose: 13,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                theme: "dark",
+            });
+            navigate("/sellerlogin")
         }
     }
     return (
         <>
-            <h1>Seller Login</h1>
-            <form method="post">
-                <input type="text" name="userName" placeholder='userName' onChange={handleData} />
-                <input type="text" name="shopName" placeholder='shopName' onChange={handleData} />
-                <input type="text" name="shopAddress" placeholder='shopAddress' onChange={handleData} />
-                <input type="number" name="number" placeholder='number' onChange={handleData} />
-                <input type="password" name="password" placeholder='Password' onChange={handleData} />
-                <button onClick={AddSeller}>Submit</button>
-            </form>
-            <button onClick={()=>navigate("/")}>Already Have AN Account</button>
+            <Navbar />
+            <section className='login'>
+                <div className="form-box1">
+                    <div className="form-value">
+                        <form method="post">
+                            <h2>Become a Seller</h2>
+                            <div className="inputbox">
+                                <input type="text" name="userName" onChange={handleData} />
+                                <label htmlFor="">UserName</label>
+                            </div>
+                            <div className="inputbox">
+                                <input type="text" name="shopName" onChange={handleData} />
+                                <label htmlFor="">Shop Name</label>
+                            </div>
+                            <div className="inputbox">
+                                <input type="text" name="shopAddress" onChange={handleData} />
+                                <label htmlFor="">Shop Address</label>
+                            </div>
+                            <div className="inputbox">
+                                <input type="number" name="number" onChange={handleData} />
+                                <label htmlFor="">Ph. Number</label>
+                            </div>
+                            <div className="inputbox">
+                                <input type="password" name="password" onChange={handleData} />
+                                <label htmlFor="">Password</label>
+                            </div>
+
+                            <button onClick={AddSeller}>Submit</button>
+                            <div className="register">
+                                <p>Already have an account ?
+                                    <NavLink onClick={() => navigate("/sellerlogin")}>Log in</NavLink>
+                                </p>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </section>
+            <ToastContainer
+                position="top-center"
+                autoClose={13}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss={false}
+                draggable={false}
+                pauseOnHover={false}
+                theme="dark"
+            />
         </>
     )
 }

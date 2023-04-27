@@ -75,7 +75,7 @@ routes.post("/login", async (req, res) => {
 
 
 routes.post("/addVagitable", SellerAuth, async (req, res) => {
-    const { Vagilist } = req.body
+    const { Vagilist, amount } = req.body
     const vagi_id = new ObjectId();
     if (!Vagilist) {
         return res.status(422).json({ error: "Fill All The Fields" })
@@ -86,8 +86,8 @@ routes.post("/addVagitable", SellerAuth, async (req, res) => {
         const allSellerPresent = await customer.findOne({ same_id: req.same_id })
 
         if (sellerPresent) {
-            const newvegi = sellerPresent.vegitables.push({ Vagilist, vagi_id });
-            const allSellernewvegi = allSellerPresent.vegitables.push({ Vagilist, vagi_id });
+            const newvegi = sellerPresent.vegitables.push({ Vagilist, vagi_id, amount });
+            const allSellernewvegi = allSellerPresent.vegitables.push({ Vagilist, vagi_id, amount });
             allSellerPresent.save();
             await sellerPresent.save();
             res.status(200).json({ message: "Vagitable Added Successfully" })

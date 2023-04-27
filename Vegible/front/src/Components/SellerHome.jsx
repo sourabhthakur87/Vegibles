@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import accunt from "./account.png"
+import Navbar2 from './Navbar2';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default function SellerHome() {
     const navigate = useNavigate();
 
@@ -26,6 +31,7 @@ export default function SellerHome() {
     }
     const [addvagi, setaddvagi] = useState({
         Vagilist: "",
+        amount: ""
     })
     const handleVaggies = (e) => {
         setaddvagi({ ...addvagi, [e.target.name]: e.target.value })
@@ -33,7 +39,7 @@ export default function SellerHome() {
 
     const AddVagitables = async (e) => {
         e.preventDefault();
-        const { Vagilist } = addvagi
+        const { Vagilist, amount } = addvagi
 
         const res = await fetch("/addVagitable", {
             method: "POST",
@@ -41,18 +47,36 @@ export default function SellerHome() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                Vagilist
+                Vagilist, amount
             })
         })
 
         await res.json();
         if (res.status === 422) {
-            alert("Fill the form")
+            toast.warn('Fill The Form', {
+                position: "top-center",
+                autoClose: 13,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                theme: "dark",
+            });
         }
         else {
-            alert("Vagitable Added SuccessFully")
-            setaddvagi({ Vagilist: "" })
-            navigate("/sellerhome")
+            toast.success('Vegetable Added Success', {
+                position: "top-center",
+                autoClose: 13,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                theme: "dark",
+            });
+            setaddvagi({ Vagilist: "", amount: "" });
+            // navigate("/sellerhome")
         }
     }
 
@@ -64,10 +88,28 @@ export default function SellerHome() {
             })
 
             if (res.status === 200) {
-                alert("Delete Success")
+                toast.success('Delete Success', {
+                    position: "top-center",
+                    autoClose: 13,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    progress: undefined,
+                    theme: "dark",
+                });
             }
             else {
-                alert("Not Delete")
+                toast.warn('Not Deletes', {
+                    position: "top-center",
+                    autoClose: 13,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    progress: undefined,
+                    theme: "dark",
+                });
             }
         }
     }
@@ -78,41 +120,65 @@ export default function SellerHome() {
     }, [vegitables])
     return (
         <>
-            <h1>Seller Home</h1>
-            <h1>{sellerData.userName}</h1>
+            <Navbar2 name={sellerData.userName}/>
+            <h1 className='customerheading'>Seller Home</h1>
+            <div className='data'>
 
-            <h1>Add Vaggies</h1>
+                <h1 className='heading'>Add Your Veggies</h1>
+                <h1 className='name'><img src={accunt} alt="img" />{sellerData.userName}</h1>
+            </div>
             <form method="post">
-                <input type="text" placeholder='Add Vaggies' name='Vagilist' onChange={handleVaggies} />
-                <button onClick={AddVagitables}>Add Vaggies</button>
+                <div className='form'>
+                    <div className='selinp' >
+                        <input type="text" placeholder='Vegetables Name' name='Vagilist' autoComplete='off' onChange={handleVaggies} />
+                        <input type="number" placeholder='Amount' name='amount' onChange={handleVaggies} />
+                        <button onClick={AddVagitables} >Add Vaggies</button>
+                    </div>
+
+                </div>
             </form>
+<hr style={{border:"2px solid green"}} />
+            <div className='container'>
+                <div className='custable'>
+                    <table border="2px">
+                        <tr>
+                            <th>SNO.</th>
+                            <th>Vegitable</th>
+                            <th>Amount</th>
+                            <th>Delete</th>
+                        </tr>
 
-            <h1>------------------------------------------------------------------------------</h1>
+                        {
+                            vegitables.map((curr, index) => {
+                                return (
+                                    <>
+                                        <tr>
+                                            <td>{index + 1}</td>
+                                            <td>{curr.Vagilist}</td>
+                                            <td>{curr.amount}</td>
+                                            <td><button style={{ backgroundColor: 'lightgreen', opacity: 1, color: 'black' }} onClick={() => deleteVegitable(curr.vagi_id)}>Delete</button></td>
+                                        </tr>
+                                    </>
+                                )
+                            })
+                        }
 
-            <table border="2px">
-                <tr>
-                    <th>SNO.</th>
-                    <th>Vegitable</th>
-                    <th>Delete</th>
-                </tr>
+                    </table>
+                </div>
+            </div>
 
-                {
-                    vegitables.map((curr, index) => {
-                        return (
-                            <>
-                                <tr>
-                                    <td>{index + 1}</td>
-                                    <td>{curr.Vagilist}</td>
-                                    <td><button onClick={() => deleteVegitable(curr.vagi_id)}>Delete</button></td>
-                                </tr>
-                            </>
-                        )
-                    })
-                }
-
-            </table>
-
-
+            <ToastContainer
+                position="top-center"
+                autoClose={13}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss={false}
+                draggable={false}
+                pauseOnHover={false}
+                theme="dark"
+            />
         </>
     )
 }

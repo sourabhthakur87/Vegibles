@@ -33,6 +33,7 @@ export default function OneSellerData() {
         <>
             <h1>One Seller Data</h1>
             <h1>{onesellerData.userName}</h1>
+            
             <h1>-------------------------------------------------</h1>
             <table border="2px">
                 <tr>

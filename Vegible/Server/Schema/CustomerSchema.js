@@ -10,6 +10,7 @@ const customerSchema = new mongoose.Schema({
     vegitables: [{
         Vagilist: String,
         vagi_id:ObjectId,
+        amount:String
     }]
 });
 

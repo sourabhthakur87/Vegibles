@@ -7,6 +7,14 @@
   pointer-events: none;
 }
 
+.logo img {
+  margin-left: 25px;
+}
+
+.nav-link {
+  margin: 0px 10px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -32,7 +40,177 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.customerheading {
+  margin-top: 2%;
+  font-size: 400%;
+  text-align: center;
+  color: #2c2e2c;
+  text-shadow: 2px 2px rgb(125, 206, 85);
+}
+
+.custable {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.custinp {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  text-align: center;
+}
+
+.custinp input {
+  width: 90%;
+  height: 6vh;
+  box-shadow: 2px 2px 4px grey;
+  border-radius: 3vh;
+  border: none;
+  background-color: rgba(78, 106, 78, 0.466);
+  padding: 0px 20px;
+  font-weight: 600;
+}
+
+input[type="text"]::placeholder {
+  text-align: center;
+  font-size: 3vh;
+  color: black
+}
+input[type="number"]::placeholder {
+  text-align: center;
+  font-size: 3vh;
+  color: black
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+table,
+th,
+td {
+  border: 2px solid #928f8f;
+}
+
+table {
+  width: 100%;
+  background-color: white;
+}
+
+th {
+  padding: 22px;
+  background-color: rgba(140, 237, 237, 0.318);
+}
+
+td {
+  padding: 10px;
+}
+
+td button {
+  width: 100%;
+}
+
+body {
+  /* The image used */
+  background-image: url("https://img.freepik.com/premium-vector/vegetables-hand-drawn-seamless-pattern-healthy-lifestyle-design-elements-white-background_71374-1431.jpg?w=740");
+
+  /* Full height */
+  max-height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+input:hover {
+  box-shadow: 3px 3px 4px grey;
+  height: 6.35vh;
+  background-color: rgba(175, 190, 175, 0.466);
+}
+
+
+.veggies {
+  color: black;
+}
+
+.selinp {
+  /* margin-top: 2%;
+    margin-bottom: 2%; */
+  margin: 10px 0px;
+  width: 100%;
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selinp input {
+  width: 400px;
+  height: 6vh;
+  box-shadow: 2px 2px 4px grey;
+  border-radius: 3vh;
+  border: none;
+  background-color: rgba(78, 106, 78, 0.466);
+  padding: 0px 20px;
+  font-weight: 600;
+  margin: 0px 5px;
+}
+
+.form {
+  display: flex;
+  /* justify-content: space-evenly; */
+  /* margin-left: 20vh; */
+}
+
+.form button {
+  /* margin-top: 28px; */
+  width: 120px;
+  margin-left: 5vh;
+  height: 6vh;
+  border-radius: 25px;
+  background-color: #90ee90;
+  font-size: 16px;
+  font-weight: bolder;
+}
+
+.form button:hover {
+  color: white;
+  background-color: #90ee20;
+}
+
+.heading {
+  margin-top: 2%;
+  font-size: 170%;
+  color: #2c2e2c;
+  margin-left: 20px;
+}
+
+.data {
+  display: flex;
+}
+
+.data .name {
+  margin-left: 75%;
+  margin-top: -5%;
+  font-size: x-large;
+}
+
+@media (max-width:1240px) {
+  .data .name {
+    margin-left: 75%;
+  }
+}
+
+.modal-body h3 {
+  display: flex;
+  justify-content: center;
 }

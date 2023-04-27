@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate, NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import ring from "./ring.png"
+import Navbar from './Navbar';
 export default function CostumerHome() {
     const navigate = useNavigate();
     const [sellerInfo, setsellerInfo] = useState([])
@@ -48,9 +50,16 @@ export default function CostumerHome() {
     }
     return (
         <>
-            <h1>Costumer Home</h1>
+        <Navbar/>
+        
+            <h1 className='customerheading'>Customer Home</h1>
+            <div className='custinp' >
             <input type="text" id='txt' onChange={(e) => setmy_search(e.target.value)} placeholder='Search' />
-            <table border="2px">
+            </div>
+            <div className='container'>
+            <div className='custable'>
+            <table border="2px" style={{width:'100%'}}>
+            <thead>
                 <tr>
                     <th>SNO.</th>
                     <th>Seller Name</th>
@@ -59,6 +68,7 @@ export default function CostumerHome() {
                     <th>address</th>
                     <th>See Available Vagitables</th>
                 </tr>
+                        </thead>
 
                 {
                     sellerInfo.filter((val) => {
@@ -69,8 +79,10 @@ export default function CostumerHome() {
                             return val;
                         }
                     }).map((curr, index) => {
+                        
                         return (
                             <>
+                            <tbody className='cont'>
                                 <tr>
                                     <td>{index + 1}</td>
                                     <td>{curr.userName}</td>
@@ -78,18 +90,19 @@ export default function CostumerHome() {
                                     <td>{curr.number}</td>
                                     <td>{curr.shopAddress}</td>
                                     {/* <td><NavLink to={"/onesellerdata/" + curr._id}>Available Vaggies</NavLink></td> */}
-                                    <td><button type="button" onClick={() => oneSellerData(curr._id)} class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    <td><button type="button" style={{backgroundColor:'lightgreen',opacity:1,color:'black'}} onClick={() => oneSellerData(curr._id)} class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     Available Veggies
                                     </button></td>
                                 </tr>
+                                </tbody>
                             </>
                         )
                     })
                 }
 
             </table>
-
-
+            </div>
+            </div>
             <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
@@ -98,13 +111,15 @@ export default function CostumerHome() {
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                            <h1>{onesellerInfo.userName}</h1>
+                            <h3>{onesellerInfo.userName}</h3>
+                            <h3><img src={ring} alt="ring" />{onesellerInfo.number}</h3>
 
                             <div className="container">
                                 <table border="2px">
                                     <tr>
                                         <th>SNO.</th>
-                                        <th>Seller Name</th>
+                                        <th>Vegetable</th>
+                                        <th>Amount</th>
 
                                     </tr>
                                     {
@@ -114,6 +129,7 @@ export default function CostumerHome() {
                                                     <tr>
                                                         <td>{index + 1}</td>
                                                         <td>{curr.Vagilist}</td>
+                                                        <td>{curr.amount}</td>
                                                     </tr>
                                                 </>
                                             )
