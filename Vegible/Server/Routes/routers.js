@@ -1,10 +1,10 @@
-const express = require("express")
+const express = require("express");
 const routes = express.Router();
 const seller = require("../Schema/SchemaSeller");
-const bcrypt = require("bcryptjs")
-const SellerAuth = require("../auth/sellerAuth")
-const customer = require("../Schema/CustomerSchema")
-const ObjectId = require("mongodb").ObjectId
+const bcrypt = require("bcryptjs");
+const SellerAuth = require("../auth/sellerAuth");
+const customer = require("../Schema/CustomerSchema");
+const ObjectId = require("mongodb").ObjectId;
 
 routes.get("/sellerdata", SellerAuth, (req, res) => {
     res.send(req.rootUser)
