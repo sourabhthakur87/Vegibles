@@ -16,7 +16,7 @@ try {
    const connection =  mongoose.connect(DB)
 
    if (connection) {
-        console.log("Database Connection Success");
+        console.log("Database Conection Success");
    }
    else{
     console.log("Database Connection Error");
