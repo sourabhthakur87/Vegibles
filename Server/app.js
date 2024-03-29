@@ -11,8 +11,8 @@ app.use(express.json())
 
 app.use(require("./Routes/routers"))
 app.use(cors({
-    origin: 'http://your-frontend-domain.com', // Replace with your frontend's domain
-    credentials: true // Enable cookies (if applicable)
+    origin: '', 
+    credentials: true 
 }));
 
 // Your other Express routes and logic here
