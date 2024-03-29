@@ -1,6 +1,6 @@
 const dotenv = require("dotenv")
 const express = require("express");
-// const cors = require('cors');
+const cors = require('cors');
 const app = express();
 const cookieparser = require("cookie-parser")
 const mongoose = require("mongoose")
@@ -9,13 +9,9 @@ dotenv.config({ path: "./.env" })
 app.use(cookieparser())
 app.use(express.json())
 
+app.use(cors());
 app.use(require("./Routes/routers"))
-// app.use(cors({
-//     origin: '', 
-//     credentials: true 
-// }));
 
-// Your other Express routes and logic here
 
 app.listen(process.env.PORT || 3000, () => {
     console.log('Server listening on port', process.env.PORT || 3000);
