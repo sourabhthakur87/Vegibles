@@ -13,9 +13,9 @@ app.use(cors());
 app.use(require("./Routes/routers"))
 
 
-app.listen(process.env.PORT || 3000, () => {
-    console.log('Server listening on port', process.env.PORT || 3000);
-});
+// app.listen(process.env.PORT || 3000, () => {
+//     console.log('Server listening on port', process.env.PORT || 3000);
+// });
 
 const DB = process.env.DATABASE;
 mongoose.set("strictQuery", true);
