@@ -14,5 +14,6 @@ const customerSchema = new mongoose.Schema({
     }]
 });
 
+
 const Customer = mongoose.model("CustomerPortal", customerSchema);
 module.exports = Customer
