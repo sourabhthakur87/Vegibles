@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Vegibles/static/css/main.efd29d4c.css",
+    "main.js": "/Vegibles/static/js/main.866eef79.js",
+    "static/media/abc.jpg": "/Vegibles/static/media/abc.877a8f9a11e32c7c16e8.jpg",
+    "static/media/logo.jpg": "/Vegibles/static/media/logo.d5dda3c51cd81f07965a.jpg",
+    "index.html": "/Vegibles/index.html",
+    "main.efd29d4c.css.map": "/Vegibles/static/css/main.efd29d4c.css.map",
+    "main.866eef79.js.map": "/Vegibles/static/js/main.866eef79.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.efd29d4c.css",
+    "static/js/main.866eef79.js"
+  ]
+}
