@@ -1,0 +1,27 @@
+services:
+  front:
+    build: 
+      context: "./front"
+      dockerfile: dockerfile
+    ports: 
+      - 3000:3000
+    container_name: react-container
+
+  server:
+    build: 
+      context: "./server"
+      dockerfile: dockerfile
+    ports:
+      - 5000:5000
+    container_name: server-container
+
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    container_name: mongo-container
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=sourabh
+      - MONGO_INITDB_ROOT_PASSWORD=sourabh
+      - MONGO_INITDB_DATABASE=mongodb+srv://sourabh:sourabh@cluster0.okytiuz.mongodb.net/vegitable?retryWrites=true&w=majority
+

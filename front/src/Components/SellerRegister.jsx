@@ -20,7 +20,7 @@ export default function SellerRegister() {
         e.preventDefault()
         const { userName, shopName, shopAddress, number, password } = sellerData
 
-        const res = await fetch("https://vegibles.onrender.com/register", {
+        const res = await fetch("/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

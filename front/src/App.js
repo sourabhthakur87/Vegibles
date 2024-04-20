@@ -19,6 +19,7 @@ function App() {
           <Route path='/' element={<CostumerHome />} />
           <Route path='/logout' element={<Logout />} />
         </Routes>
+        
       </BrowserRouter>
     </>
   );

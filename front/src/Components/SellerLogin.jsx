@@ -18,7 +18,7 @@ export default function SellerLogin() {
         e.preventDefault()
         const { shopName, password } = sellerData
 
-        const res = await fetch("https://vegibles.onrender.com/login", {
+        const res = await fetch("/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

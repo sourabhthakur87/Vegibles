@@ -8,7 +8,7 @@ export default function CostumerHome() {
     const [my_search, setmy_search] = useState("");
     const getAllData = async () => {
         try {
-            const res = await fetch("https://vegibles.onrender.com/alldata", {
+            const res = await fetch("/alldata", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json"
